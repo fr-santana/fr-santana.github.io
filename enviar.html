@@ -1,0 +1,48 @@
+<html>
+    <head>
+
+        <title>Mi pagina</title>
+
+        <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+        <script src="https://code.jquery.com/jquery-git.min.js"></script>
+        <script>
+            var OneSignal = window.OneSignal || [];
+            OneSignal.push(function () {
+                OneSignal.init({
+                    appId: "669e5950-3f31-4045-bf24-4f7694bcaca6",
+                });
+            });
+
+            function enviar() {
+
+
+                $.ajax
+                        ({
+                            type: "POST",
+                            url: "https://onesignal.com/api/v1/notifications",
+                            dataType: 'json',
+                            headers: {
+                                "Authorization": "Basic MGU0MmUxOWItYzQ1Zi00ZTFiLWJjMjEtMjJjZDVlZGVhMmY5",
+                                "Content-Type": "application/json; charset=utf-8"
+                            },
+                            data: {appid: '669e5950-3f31-4045-bf24-4f7694bcaca6',
+                                contents:{en:'Mi mensaje'},
+                                included_segments: ["Subscribed Users"]
+
+                            }
+                            ,
+                            success: function () {
+                                alert('Mensaje Enviado');
+                            }
+                        });
+
+
+            }
+        </script>
+
+    </head>
+    <body>
+        <h1>Pagina de notificaciones</h1>
+        <input type="button" onclick="enviar()" value="Enviar" />
+    </body>
+</html>
